@@ -1,15 +1,21 @@
 import "./styles.css";
 import webpack from "webpack";
 import { path } from "path";
+
+import { fs } from 'memfs';
+
 export default function App() {
   // https://webpack.js.org/api/node
 
   let compiler = webpack({
     entry: "./src/index.js",
     output: {
-      path: path.resolve(__dirname, "dist")
+      path: path.resolve(__dirname, "dist"),
+      filename:'bundle.js'
     }
   });
+
+
 
   compiler.run(function (err, stats) {
     console.log(stats);
